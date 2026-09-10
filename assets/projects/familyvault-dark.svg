@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --grid-line: rgba(255, 255, 255, 0.05);
+        --panel-bg: #161b22;
+        --panel-border: #444c56;
+        --window-bar: #21262d;
+        --text-dark: #c9d1d9;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+        --accent-alt: #3fb950;
+      }
+      .bg { fill: var(--bg); }
+      .grid-line { stroke: var(--grid-line); stroke-width: 1; }
+      .border { stroke: var(--panel-border); stroke-width: 2; fill: none; }
+      .border-thin { stroke: var(--panel-border); stroke-width: 1; fill: none; }
+      .panel { fill: var(--panel-bg); stroke: var(--panel-border); stroke-width: 2; }
+      .window-bar { fill: var(--window-bar); stroke: var(--panel-border); stroke-width: 2; }
+      .fill { fill: var(--panel-border); }
+      .text-title { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: bold; fill: var(--text-dark); }
+      .text-sub   { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: var(--text-muted); }
+      .text-node  { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; fill: var(--text-dark); text-anchor: middle; }
+      .text-small { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; fill: var(--text-muted); text-anchor: middle; }
+      .accent { fill: var(--accent); }
+      .accent-stroke { stroke: var(--accent); fill: none; stroke-width: 2; }
+      
+      .signal { stroke: var(--panel-border); stroke-width: 1; stroke-dasharray: 4 4; opacity: 0.5; }
+      .signal-active { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 4 4; }
+    </style>
+    <pattern id="bgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#bgGrid)" />
+
+  <rect x="20" y="20" width="560" height="300" class="panel" />
+
+  <rect x="20" y="20" width="560" height="24" class="window-bar" />
+  <line x1="20" y1="44" x2="580" y2="44" class="border" />
+  <line x1="60" y1="28" x2="540" y2="28" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="32" x2="540" y2="32" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="36" x2="540" y2="36" class="border-thin" opacity="0.5" />
+  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <rect x="30" y="54" width="540" height="256" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <text x="50" y="83" class="text-title">PROJECT 05: FAMILYVAULT</text>
+  <text x="50" y="101" class="text-sub">Secure Group File Sharing</text>
+
+
+  <!-- Top: Go Backend & Auth -->
+  <g transform="translate(200, 120)">
+    <rect x="0" y="0" width="160" height="60" class="border" fill="var(--panel-bg)" />
+    <line x1="0" y1="25" x2="160" y2="25" class="border-thin" />
+    <text x="80" y="17" class="text-node">GO BACKEND CORE</text>
+    <rect x="10" y="32" width="65" height="20" class="border-thin" />
+    <text x="42" y="45" class="text-small">AUTH</text>
+    <rect x="85" y="32" width="65" height="20" class="border-thin" />
+    <text x="117" y="45" class="text-small">RBAC</text>
+  </g>
+  <path d="M 280 180 L 280 210" class="signal-active" />
+
+  <!-- Center: Secure Storage (Vault motif) -->
+  <g transform="translate(240, 210)">
+    <rect x="0" y="0" width="80" height="60" class="border" rx="6" />
+    <circle cx="40" cy="30" r="12" class="border" stroke-dasharray="2 2" />
+    <circle cx="40" cy="30" r="4" class="fill" />
+    <line x1="40" y1="30" x2="48" y2="22" class="border-thin" />
+    <text x="40" y="85" class="text-node">SECURE STORAGE</text>
+  </g>
+
+  <!-- Left: Mac Desktop -->
+  <path d="M 240 240 L 160 240" class="signal" />
+  <g transform="translate(70, 215)">
+    <rect x="0" y="0" width="90" height="50" class="border" />
+    <rect x="5" y="5" width="80" height="30" class="border-thin" />
+    <path d="M 35 50 L 30 60 L 60 60 L 55 50" class="border" fill="var(--panel-bg)" />
+    <text x="45" y="75" class="text-small">DESKTOP</text>
+  </g>
+
+  <!-- Right: Android Mobile -->
+  <path d="M 320 240 L 400 240" class="signal" />
+  <g transform="translate(400, 210)">
+    <rect x="0" y="0" width="40" height="70" class="border" rx="3" />
+    <rect x="5" y="8" width="30" height="48" class="border-thin" />
+    <circle cx="20" cy="63" r="2" class="fill" />
+    <text x="20" y="85" class="text-small">MOBILE</text>
+  </g>
+
+</svg>

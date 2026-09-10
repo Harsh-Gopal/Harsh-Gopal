@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --grid-line: rgba(255, 255, 255, 0.05);
+        --panel-bg: #161b22;
+        --panel-border: #444c56;
+        --window-bar: #21262d;
+        --text-dark: #c9d1d9;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+        --accent-alt: #3fb950;
+      }
+      .bg { fill: var(--bg); }
+      .grid-line { stroke: var(--grid-line); stroke-width: 1; }
+      .border { stroke: var(--panel-border); stroke-width: 2; fill: none; }
+      .border-thin { stroke: var(--panel-border); stroke-width: 1; fill: none; }
+      .panel { fill: var(--panel-bg); stroke: var(--panel-border); stroke-width: 2; }
+      .window-bar { fill: var(--window-bar); stroke: var(--panel-border); stroke-width: 2; }
+      .fill { fill: var(--panel-border); }
+      .text-title { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: bold; fill: var(--text-dark); }
+      .text-sub   { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: var(--text-muted); }
+      .text-node  { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; fill: var(--text-dark); text-anchor: middle; }
+      .text-small { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; fill: var(--text-muted); text-anchor: middle; }
+      .accent { fill: var(--accent); }
+      .accent-stroke { stroke: var(--accent); fill: none; stroke-width: 2; }
+      
+      .signal { stroke: var(--panel-border); stroke-width: 1; stroke-dasharray: 4 4; opacity: 0.5; }
+      .signal-active { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 4 4; }
+    </style>
+    <pattern id="bgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#bgGrid)" />
+
+  <rect x="20" y="20" width="560" height="300" class="panel" />
+
+  <rect x="20" y="20" width="560" height="24" class="window-bar" />
+  <line x1="20" y1="44" x2="580" y2="44" class="border" />
+  <line x1="60" y1="28" x2="540" y2="28" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="32" x2="540" y2="32" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="36" x2="540" y2="36" class="border-thin" opacity="0.5" />
+  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <rect x="30" y="54" width="540" height="256" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <text x="50" y="83" class="text-title">PROJECT 03: ADAPTIVE 3D GAMEPLAY</text>
+  <text x="50" y="101" class="text-sub">AI-Driven Difficulty Scaling / IEEE Research</text>
+
+
+  <!-- Left Column: Telemetry -->
+  <g transform="translate(60, 130)">
+    <rect x="0" y="0" width="100" height="40" class="border" />
+    <polyline points="10,25 25,25 35,15 45,30 55,20 65,25 90,25" class="border-thin" stroke="var(--accent)" />
+    <text x="50" y="55" class="text-small">PLAYER TELEMETRY</text>
+  </g>
+  <path d="M 160 150 L 220 150" class="signal-active" />
+
+  <!-- Center: Game State & 3D Abstract Grid -->
+  <g transform="translate(220, 130)">
+    <rect x="0" y="0" width="120" height="100" class="border" fill="var(--panel-bg)" />
+    <text x="60" y="15" class="text-node">GAME STATE</text>
+    <!-- Isometric Grid -->
+    <path d="M 20 60 L 60 40 L 100 60 L 60 80 Z" class="border-thin" />
+    <path d="M 20 70 L 60 50 L 100 70 L 60 90 Z" class="border-thin" opacity="0.5" />
+    <path d="M 60 40 L 60 90" class="border-thin" />
+    <!-- Abstract 3D Cube -->
+    <polygon points="55,45 65,40 75,45 65,50" class="fill" />
+    <polygon points="55,45 65,50 65,60 55,55" class="fill" opacity="0.7" />
+    <polygon points="75,45 65,50 65,60 75,55" class="fill" opacity="0.4" />
+  </g>
+  
+  <path d="M 340 160 L 400 160" class="signal" />
+  <path d="M 400 200 L 340 200" class="signal-active" />
+
+  <!-- Right Column: ML-Agents / Adaptive Logic -->
+  <g transform="translate(400, 140)">
+    <rect x="0" y="0" width="120" height="80" class="border" />
+    <line x1="0" y1="25" x2="120" y2="25" class="border-thin" />
+    <text x="60" y="17" class="text-node">ML-AGENTS</text>
+    <circle cx="60" cy="55" r="15" class="border-thin" />
+    <circle cx="45" cy="55" r="3" class="fill" />
+    <circle cx="75" cy="55" r="3" class="fill" />
+    <circle cx="60" cy="40" r="3" class="fill" />
+    <circle cx="60" cy="70" r="3" class="fill" />
+    <path d="M 45 55 L 60 40 L 75 55 L 60 70 Z" class="border-thin" />
+  </g>
+  
+  <!-- Adaptation Loop -->
+  <path d="M 280 230 L 280 270 L 110 270 L 110 185" class="signal" />
+  <text x="280" y="265" class="text-small" fill="var(--bg)">.</text>
+  <text x="195" y="265" class="text-small">REAL-TIME ADAPTATION</text>
+
+</svg>

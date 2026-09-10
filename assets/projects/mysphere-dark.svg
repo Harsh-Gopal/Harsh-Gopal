@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --grid-line: rgba(255, 255, 255, 0.05);
+        --panel-bg: #161b22;
+        --panel-border: #444c56;
+        --window-bar: #21262d;
+        --text-dark: #c9d1d9;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+        --accent-alt: #3fb950;
+      }
+      .bg { fill: var(--bg); }
+      .grid-line { stroke: var(--grid-line); stroke-width: 1; }
+      .border { stroke: var(--panel-border); stroke-width: 2; fill: none; }
+      .border-thin { stroke: var(--panel-border); stroke-width: 1; fill: none; }
+      .panel { fill: var(--panel-bg); stroke: var(--panel-border); stroke-width: 2; }
+      .window-bar { fill: var(--window-bar); stroke: var(--panel-border); stroke-width: 2; }
+      .fill { fill: var(--panel-border); }
+      .text-title { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: bold; fill: var(--text-dark); }
+      .text-sub   { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: var(--text-muted); }
+      .text-node  { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; fill: var(--text-dark); text-anchor: middle; }
+      .text-small { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; fill: var(--text-muted); text-anchor: middle; }
+      .accent { fill: var(--accent); }
+      .accent-stroke { stroke: var(--accent); fill: none; stroke-width: 2; }
+      
+      .signal { stroke: var(--panel-border); stroke-width: 1; stroke-dasharray: 4 4; opacity: 0.5; }
+      .signal-active { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 4 4; }
+    </style>
+    <pattern id="bgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#bgGrid)" />
+
+  <rect x="20" y="20" width="560" height="300" class="panel" />
+
+  <rect x="20" y="20" width="560" height="24" class="window-bar" />
+  <line x1="20" y1="44" x2="580" y2="44" class="border" />
+  <line x1="60" y1="28" x2="540" y2="28" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="32" x2="540" y2="32" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="36" x2="540" y2="36" class="border-thin" opacity="0.5" />
+  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <rect x="30" y="54" width="540" height="256" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <text x="50" y="83" class="text-title">PROJECT 02: MYSPHERE</text>
+  <text x="50" y="101" class="text-sub">Cross-Device Sync Ecosystem</text>
+
+
+  <!-- macOS -->
+  <g transform="translate(60, 130)">
+    <rect x="0" y="0" width="70" height="45" class="border" />
+    <rect x="5" y="5" width="60" height="25" class="border-thin" />
+    <path d="M 25 45 L 20 55 L 50 55 L 45 45" class="border" fill="var(--panel-bg)" />
+    <text x="35" y="21" class="text-node">MAC</text>
+  </g>
+  
+  <!-- Windows -->
+  <g transform="translate(60, 220)">
+    <rect x="0" y="0" width="70" height="45" class="border" />
+    <rect x="5" y="5" width="60" height="25" class="border-thin" />
+    <path d="M 10 55 L 60 55" class="border" />
+    <rect x="25" y="45" width="20" height="10" class="border" fill="var(--panel-bg)" />
+    <text x="35" y="21" class="text-node">WIN</text>
+  </g>
+  
+  <!-- Android -->
+  <g transform="translate(160, 175)">
+    <rect x="0" y="0" width="30" height="55" class="border" rx="3" />
+    <rect x="4" y="8" width="22" height="38" class="border-thin" />
+    <circle cx="15" cy="4" r="1" class="fill" />
+    <text x="15" y="68" class="text-small">AND</text>
+  </g>
+  
+  <!-- Connections to Local Network -->
+  <path d="M 130 152 L 220 152 L 220 185 L 250 185" class="signal" />
+  <path d="M 130 242 L 220 242 L 220 215 L 250 215" class="signal" />
+  <path d="M 190 200 L 250 200" class="signal" />
+
+  <!-- SYNC CORE -->
+  <g transform="translate(250, 160)">
+    <rect x="0" y="0" width="100" height="80" class="border" rx="8" />
+    <circle cx="50" cy="40" r="20" class="border" stroke-dasharray="2 2" />
+    <circle cx="50" cy="40" r="5" class="fill" />
+    <text x="50" y="20" class="text-node">SYNC CORE</text>
+  </g>
+  <path d="M 350 200 L 400 200" class="signal-active" />
+
+  <!-- Capabilities & Firebase -->
+  <g transform="translate(400, 130)">
+    <rect x="0" y="0" width="110" height="80" class="border" fill="var(--panel-bg)" />
+    <rect x="10" y="10" width="90" height="15" class="border-thin" />
+    <rect x="10" y="32" width="90" height="15" class="border-thin" />
+    <rect x="10" y="54" width="90" height="15" class="border-thin" />
+    <text x="55" y="21" class="text-small">CLIPBOARD</text>
+    <text x="55" y="43" class="text-small">MEDIA</text>
+    <text x="55" y="65" class="text-small">FILES</text>
+  </g>
+  <path d="M 455 210 L 455 240" class="signal" />
+  
+  <g transform="translate(400, 240)">
+    <rect x="0" y="0" width="110" height="30" class="border" />
+    <text x="55" y="19" class="text-node">CLOUD RELAY</text>
+  </g>
+
+</svg>
