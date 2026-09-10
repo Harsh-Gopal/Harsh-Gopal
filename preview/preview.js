@@ -1,41 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Load SVGs inline so CSS variables can cascade in the preview
-    const containers = document.querySelectorAll('.svg-container');
-    
-    Promise.all(Array.from(containers).map(container => {
-        const src = container.getAttribute('data-src');
-        return fetch(src)
-            .then(res => res.text())
-            .then(svgText => {
-                // Remove the strict `@media (prefers-color-scheme)` wrapper from the SVG 
-                // ONLY for the local preview so we can force the theme via parent CSS.
-                // In production, GitHub respects the OS setting natively.
-                let modifiedSvg = svgText.replace(/@media \(prefers-color-scheme:\s*dark\)\s*\{([\s\S]*?)\}/, '$1');
-                
-                // Also modify root variables to cascade from the parent html[data-theme]
-                modifiedSvg = modifiedSvg.replace(/:root\s*\{([\s\S]*?)\}/, '/* root removed for preview cascade */');
-                
-                container.innerHTML = modifiedSvg;
-            });
-    })).then(() => {
-        console.log("SVGs loaded and prepared for theme overriding.");
-    });
-
-    // 2. Setup Controls
     const html = document.documentElement;
-    const themeBtn = document.getElementById('theme-btn');
+    const body = document.body;
+    const themeSelect = document.getElementById('theme-select');
     const motionBtn = document.getElementById('motion-btn');
 
-    themeBtn.addEventListener('click', () => {
-        if (html.getAttribute('data-theme') === 'dark') {
-            html.setAttribute('data-theme', 'light');
-            themeBtn.textContent = 'Toggle Dark Mode';
-        } else {
-            html.setAttribute('data-theme', 'dark');
-            themeBtn.textContent = 'Toggle Light Mode';
-        }
-    });
+    // ── Theme Switcher ──────────────────────────────────────────────────────
+    // All <picture class="preview-pic"> elements will respond to theme changes.
+    // The JS overrides the <source media="..."> attribute to force light or dark.
 
+    function applyTheme(mode) {
+        body.setAttribute('data-theme', mode);
+        html.setAttribute('data-theme', mode);
+
+        const pictures = document.querySelectorAll('picture.preview-pic');
+        pictures.forEach(pic => {
+            const sources = pic.querySelectorAll('source');
+            sources.forEach(source => {
+                // Cache the original media value on first run
+                const originalMedia = source.getAttribute('data-original-media') || source.getAttribute('media');
+                if (!source.hasAttribute('data-original-media')) {
+                    source.setAttribute('data-original-media', originalMedia);
+                }
+
+                if (mode === 'system') {
+                    source.setAttribute('media', originalMedia);
+                } else if (mode === 'light') {
+                    // Disable the dark source so the light fallback <img> is used
+                    source.setAttribute('media', '(max-width: 0px)');
+                } else if (mode === 'dark') {
+                    // Activate the dark source unconditionally
+                    source.setAttribute('media', 'all');
+                }
+            });
+        });
+    }
+
+    themeSelect.addEventListener('change', (e) => applyTheme(e.target.value));
+    // Apply default on load
+    applyTheme(themeSelect.value);
+
+    // ── Reduced Motion Toggle ───────────────────────────────────────────────
     motionBtn.addEventListener('click', () => {
         if (html.getAttribute('data-reduce-motion') === 'true') {
             html.removeAttribute('data-reduce-motion');
@@ -44,5 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
             html.setAttribute('data-reduce-motion', 'true');
             motionBtn.textContent = 'Enable Motion';
         }
+    });
+
+    // ── Cursor Parallax (Preview-Only) ──────────────────────────────────────
+    // Updates CSS custom properties tracked by preview.css ::before grid layer.
+    let rafId = null;
+    document.addEventListener('mousemove', (e) => {
+        if (html.getAttribute('data-reduce-motion') === 'true') return;
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            // Normalize to [-1, 1]
+            const x = (e.clientX / window.innerWidth)  * 2 - 1;
+            const y = (e.clientY / window.innerHeight) * 2 - 1;
+            html.style.setProperty('--mouse-x', x);
+            html.style.setProperty('--mouse-y', y);
+        });
     });
 });

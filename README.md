@@ -1,12 +1,15 @@
 <div align="center">
 
-<img src="./public/hero.svg" alt="Harsh Gopal - AI Engineer // Full-Stack" width="800" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/hero-dark.svg">
+  <img src="./public/hero-light.svg" alt="Harsh Gopal — AI Engineer // Full-Stack" width="800" />
+</picture>
 
 </div>
 
 ## 01 / ABOUT
 
-I am an **AI Engineer and Full-Stack Developer** focused on building intelligent software for a smarter tomorrow. I specialize in designing and engineering **Agentic AI systems**, combining modern LLM orchestration with robust backend infrastructure and premium frontend interfaces. My approach is deeply technical, slightly experimental, and always optimized for scale.
+Specializing in **Agentic AI** and **intelligent software**, I build robust, full-stack products that bridge experimental AI capabilities with practical, scalable applications. My focus is on creating dynamic, premium experiences from complex data.
 
 ---
 
@@ -14,11 +17,17 @@ I am an **AI Engineer and Full-Stack Developer** focused on building intelligent
 
 <div align="center">
 
-<img src="./public/cartradar.svg" alt="Project 01: Cart Radar" width="600" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/cartradar-dark.svg">
+  <img src="./public/cartradar-light.svg" alt="Project 01: Cart Radar Architecture" width="600" />
+</picture>
 
 <br/><br/>
 
-<img src="./public/mysphere.svg" alt="Project 02: MySphere" width="600" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/mysphere-dark.svg">
+  <img src="./public/mysphere-light.svg" alt="Project 02: MySphere Architecture" width="600" />
+</picture>
 
 </div>
 
@@ -27,7 +36,10 @@ I am an **AI Engineer and Full-Stack Developer** focused on building intelligent
 ## 03 / SYSTEM STATUS
 
 <div align="center">
-<img src="./public/status.svg" alt="System Status Indicators" width="500" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/status-dark.svg">
+  <img src="./public/status-light.svg" alt="System Status Indicators" width="500" />
+</picture>
 </div>
 
 ---
@@ -35,23 +47,37 @@ I am an **AI Engineer and Full-Stack Developer** focused on building intelligent
 ## 04 / SYSTEM COMPONENTS
 
 <div align="center">
-<img src="./public/components.svg" alt="System Components / Tech Stack" width="600" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/components-dark.svg">
+  <img src="./public/components-light.svg" alt="System Components" width="600" />
+</picture>
 </div>
 
 ---
 
 ## 05 / SELECTED WORK
 
-- **Cart Radar**: Real-Time Quick-Commerce Inventory Aggregator.
-- **MySphere**: Cross-device environment & ecosystem for seamless syncing.
-- **Adaptive 3D Gameplay**: Experimental implementations of AI in adaptive 3D environments.
+<div align="left">
 
----
+### `[01]` CART RADAR
+> **Real-Time Quick-Commerce Inventory Aggregator**<br/>
+> <code>Python</code> <code>FastAPI</code> <code>React</code> <code>TypeScript</code> <code>Playwright</code><br/>
+> [↗ OPEN REPOSITORY](https://github.com/Harsh-Gopal)
 
-## 06 / SYSTEM ACTIVITY
+<br/>
 
-<div align="center">
-<img src="./public/activity.svg" alt="Contribution Matrix" width="664" />
+### `[02]` MYSPHERE
+> **Cross-Device Environment & Ecosystem**<br/>
+> <code>Android</code> <code>Firebase</code> <code>Clean Architecture</code><br/>
+> [↗ OPEN REPOSITORY](https://github.com/Harsh-Gopal)
+
+<br/>
+
+### `[03]` ADAPTIVE 3D GAMEPLAY
+> **AI-driven adaptive 3D gameplay research**<br/>
+> <code>Three.js</code> <code>AI</code> <code>Adaptive Systems</code><br/>
+> [↗ OPEN REPOSITORY](https://github.com/Harsh-Gopal)
+
 </div>
 
 ---
@@ -60,7 +86,7 @@ I am an **AI Engineer and Full-Stack Developer** focused on building intelligent
   <p>
     <a href="https://github.com/Harsh-Gopal">GitHub</a> •
     <a href="#">LinkedIn</a> •
-    <a href="#">Portfolio</a>
+    <a href="https://harshgopal.dev">Portfolio</a>
   </p>
   <p><code>SYSTEM.ONLINE // v2.0.0</code></p>
 </div>

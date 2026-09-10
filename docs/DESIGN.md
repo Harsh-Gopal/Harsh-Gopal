@@ -40,4 +40,43 @@ Checklist:
 - [ ] README works without JavaScript
 - [ ] Project information is accurate
 - [ ] No dead links
-- [ ] Contribution animation works
+## Visual Regression Checklist
+
+### DARK
+
+- [ ] Hero dark
+- [ ] Cart Radar dark
+- [ ] MySphere dark
+- [ ] System Status dark
+- [ ] System Components dark
+- [ ] Activity dark
+- [ ] Selected Work readable
+
+### LIGHT
+
+- [ ] Hero light
+- [ ] Cart Radar light
+- [ ] MySphere light
+- [ ] System Status light
+- [ ] System Components light
+- [ ] Activity light
+- [ ] Selected Work readable
+
+### Rendering
+
+- [ ] No SVG clipping
+- [ ] No SVG overflow
+- [ ] No mixed themes
+- [ ] No broken text
+- [ ] No missing assets
+- [ ] No animation glitches
+- [ ] No preview-only controls in README
+
+### GitHub
+
+- [ ] README renders correctly
+- [ ] Dark GitHub renders correctly
+- [ ] Light GitHub renders correctly
+- [ ] All links work
+- [ ] SVG assets load
+- [ ] Activity workflow works

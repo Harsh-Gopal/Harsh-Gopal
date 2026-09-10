@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300">
+  <defs>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --grid-line: rgba(255, 255, 255, 0.05);
+        --panel-bg: #161b22;
+        --panel-border: #444c56;
+        --window-bar: #21262d;
+        --text-dark: #c9d1d9;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+      }
+      .bg { fill: var(--bg); }
+      .grid-line { stroke: var(--grid-line); stroke-width: 1; }
+      .border { stroke: var(--panel-border); stroke-width: 2; fill: none; }
+      .border-thin { stroke: var(--panel-border); stroke-width: 1; fill: none; }
+      .panel { fill: var(--panel-bg); stroke: var(--panel-border); stroke-width: 2; }
+      .window-bar { fill: var(--window-bar); stroke: var(--panel-border); stroke-width: 2; }
+      .fill { fill: var(--panel-border); }
+      .text-title { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; font-weight: bold; fill: var(--text-dark); }
+      .text-sub { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: var(--text-muted); }
+      .text-node { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; fill: var(--text-dark); font-weight: bold; }
+      .text-tech { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; fill: var(--text-muted); }
+      
+      @keyframes pulse {
+        0%, 100% { fill-opacity: 1; }
+        50% { fill-opacity: 0.3; }
+      }
+      @keyframes dash {
+        to { stroke-dashoffset: -20; }
+      }
+      @keyframes travel {
+        0% { transform: translateX(0) translateY(0); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(30px) translateY(0); opacity: 0; }
+      }
+      @keyframes travel-down {
+        0% { transform: translateX(0) translateY(0); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(0) translateY(30px); opacity: 0; }
+      }
+      @keyframes signal-bus {
+        0% { transform: translateX(0); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(600px); opacity: 0; }
+      }
+      
+      .pulse { animation: pulse 2s ease-in-out infinite; }
+      .signal { stroke: var(--panel-border); stroke-width: 1; stroke-dasharray: 2 4; opacity: 0.5; }
+      .packet { fill: var(--accent); animation: travel 2s linear infinite; }
+      .packet-down { fill: var(--accent); animation: travel-down 2s linear infinite; }
+      .bus-dot { fill: var(--accent); animation: signal-bus 6s linear infinite; }
+      
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; }
+        .packet, .packet-down, .bus-dot { display: none; }
+      }
+    </style>
+    <pattern id="bgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#bgGrid)" />
+  
+  <rect x="20" y="20" width="560" height="240" class="panel" />
+  
+  <rect x="20" y="20" width="560" height="24" class="window-bar" />
+  <line x1="20" y1="44" x2="580" y2="44" class="border" />
+  <line x1="60" y1="28" x2="540" y2="28" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="32" x2="540" y2="32" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="36" x2="540" y2="36" class="border-thin" opacity="0.5" />
+  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+  
+  <rect x="30" y="54" width="540" height="196" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <text x="45" y="80" class="text-title">PROJECT 01: CART RADAR</text>
+  <text x="45" y="95" class="text-sub">Real-Time Quick-Commerce Inventory Aggregator</text>
+
+  <!-- Network Diagram -->
+  <!-- Layer 1: Sources -->
+  <g transform="translate(60, 130)">
+    <rect x="0" y="0" width="90" height="40" class="border" />
+    <rect x="5" y="5" width="8" height="8" class="fill pulse" />
+    <text x="20" y="15" class="text-node">QC SOURCES</text>
+    <text x="20" y="28" class="text-tech">Data streams</text>
+  </g>
+  
+  <!-- Path 1 -->
+  <path d="M 150 150 L 190 150" class="signal" fill="none" />
+  <rect x="150" y="148" width="4" height="4" class="packet" />
+
+  <!-- Layer 2: Ingestion -->
+  <g transform="translate(190, 130)">
+    <rect x="0" y="0" width="90" height="40" class="border" />
+    <rect x="5" y="5" width="8" height="8" class="fill pulse" style="animation-delay: 0.5s;" />
+    <text x="20" y="15" class="text-node">INGESTION</text>
+    <text x="20" y="28" class="text-tech">Playwright</text>
+  </g>
+
+  <!-- Path 2 -->
+  <path d="M 280 150 L 320 150" class="signal" fill="none" />
+  <rect x="280" y="148" width="4" height="4" class="packet" style="animation-delay: 0.5s;" />
+
+  <!-- Layer 3: Processing & DB -->
+  <g transform="translate(320, 110)">
+    <!-- Main API block -->
+    <rect x="0" y="0" width="90" height="80" class="border" />
+    <text x="10" y="20" class="text-node">API / LOGIC</text>
+    <text x="10" y="33" class="text-tech">Python/FastAPI</text>
+    <!-- DB sub-block -->
+    <rect x="10" y="45" width="70" height="25" class="border-thin" fill="var(--panel-bg)" />
+    <text x="15" y="60" class="text-tech">SQLite DB</text>
+    <circle cx="75" cy="57" r="3" class="fill" />
+  </g>
+
+  <!-- Path 3 -->
+  <path d="M 410 150 L 450 150" class="signal" fill="none" />
+  <rect x="410" y="148" width="4" height="4" class="packet" style="animation-delay: 1s;" />
+
+  <!-- Layer 4: Client -->
+  <g transform="translate(450, 130)">
+    <path d="M 0 5 L 15 5 L 20 10 L 90 10 L 90 40 L 0 40 Z" class="border" fill="var(--panel-bg)" />
+    <rect x="5" y="15" width="8" height="8" class="fill pulse" style="animation-delay: 1.5s;" />
+    <text x="20" y="23" class="text-node">CLIENT UI</text>
+    <text x="20" y="34" class="text-tech">React/TS</text>
+  </g>
+</svg>

@@ -2,30 +2,16 @@
   <defs>
     <style>
       :root {
-        --bg: #f4f5f5;
-        --grid-line: rgba(0, 0, 0, 0.05);
-        --panel-bg: #e8e8e8;
-        --panel-border: #111111;
-        --window-bar: #cccccc;
-        --text-dark: #111111;
-        --text-muted: #666666;
-        --accent: #0033cc;
-        --accent-alt: #cc3300;
-        --pixel-fill: #222222;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0d1117;
-          --grid-line: rgba(255, 255, 255, 0.05);
-          --panel-bg: #161b22;
-          --panel-border: #444c56;
-          --window-bar: #21262d;
-          --text-dark: #c9d1d9;
-          --text-muted: #8b949e;
-          --accent: #58a6ff;
-          --accent-alt: #ff7b72;
-          --pixel-fill: #c9d1d9;
-        }
+        --bg: #0d1117;
+        --grid-line: rgba(255, 255, 255, 0.05);
+        --panel-bg: #161b22;
+        --panel-border: #444c56;
+        --window-bar: #21262d;
+        --text-dark: #c9d1d9;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+        --accent-alt: #ff7b72;
+        --pixel-fill: #c9d1d9;
       }
       
       .bg { fill: var(--bg); }
@@ -66,10 +52,6 @@
         40%, 75% { stroke-dashoffset: 0; opacity: 1; }
         85%, 100% { stroke-dashoffset: -100; opacity: 0; }
       }
-      @keyframes cursor-blink {
-        0%, 49% { opacity: 1; }
-        50%, 100% { opacity: 0; }
-      }
       @keyframes float {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-5px); }
@@ -79,9 +61,11 @@
       .anim-pixels { animation: pixels-gather 20s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
       .anim-text { animation: text-emerge 20s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
       .anim-signal { stroke-dasharray: 100; stroke-dashoffset: 100; animation: signal-move 20s linear infinite; }
-      .cursor { animation: cursor-blink 1s step-end infinite; }
       .float { animation: float 6s ease-in-out infinite; }
       
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; opacity: 1 !important; transform: none !important; }
+      }
     </style>
     
     <!-- Background Grid Pattern -->
@@ -157,7 +141,6 @@
       <g transform="translate(40, 145)">
         <text x="0" y="0" class="text-term">$ echo "Building intelligent software"</text>
         <text x="0" y="20" class="text-term">&gt; RUN_SEQUENCE_INITIALIZED</text>
-        <rect x="210" y="8" width="8" height="12" class="cursor" />
       </g>
     </g>
   </g>

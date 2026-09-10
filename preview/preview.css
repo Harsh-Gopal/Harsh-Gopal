@@ -1,106 +1,276 @@
+/* ============================================================
+   GitHub Profile Local Preview — preview.css
+   Preview-only styles. Never ships to production README.
+   ============================================================ */
+
+/* --- Design Tokens --- */
 :root {
-    --bg-color: #0d1117;
-    --text-color: #c9d1d9;
-    --border-color: #30363d;
-    --link-color: #58a6ff;
-    --control-bg: #161b22;
+    --bg: #ffffff;
+    --text-dark: #24292f;
+    --text-muted: #57606a;
+    --panel-border: #d0d7de;
+    --panel-bg: #f6f8fa;
+    --accent: #0969da;
+    --hr-color: #d0d7de;
 }
 
-html[data-theme="light"] {
-    --bg-color: #ffffff;
-    --text-color: #24292f;
-    --border-color: #d0d7de;
-    --link-color: #0969da;
-    --control-bg: #f6f8fa;
+[data-theme="dark"],
+[data-theme="system"] {
+    /* System-mode: rely on OS prefers-color-scheme */
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-theme="system"] {
+        --bg: #0d1117;
+        --text-dark: #c9d1d9;
+        --text-muted: #8b949e;
+        --panel-border: #30363d;
+        --panel-bg: #161b22;
+        --accent: #58a6ff;
+        --hr-color: #21262d;
+    }
+}
+
+[data-theme="dark"] {
+    --bg: #0d1117;
+    --text-dark: #c9d1d9;
+    --text-muted: #8b949e;
+    --panel-border: #30363d;
+    --panel-bg: #161b22;
+    --accent: #58a6ff;
+    --hr-color: #21262d;
+}
+
+/* --- Reset / Base --- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    --mouse-x: 0;
+    --mouse-y: 0;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+    background-color: var(--bg);
+    color: var(--text-dark);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     margin: 0;
-    padding: 20px;
-    transition: background-color 0.3s, color 0.3s;
+    padding: 0;
+    line-height: 1.6;
+    transition: background-color 0.25s, color 0.25s;
 }
 
-.dev-controls {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+/* --- Toolbar --- */
+.toolbar {
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--panel-border);
+    padding: 10px 24px;
     display: flex;
-    gap: 10px;
-    background: var(--control-bg);
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-.dev-controls button {
-    background: var(--bg-color);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
+    align-items: center;
+    gap: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     font-size: 12px;
 }
 
-.dev-controls button:hover {
-    opacity: 0.8;
+.toolbar select,
+.toolbar button {
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: border-color 0.15s;
 }
 
+.toolbar select:hover,
+.toolbar button:hover {
+    border-color: var(--accent);
+}
+
+.toolbar-note {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--text-muted);
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* --- Main Container --- */
 .markdown-body {
-    max-width: 832px;
-    margin: 0 auto;
-    padding: 32px;
-    background: var(--bg-color);
+    max-width: 820px;
+    margin: 48px auto;
+    padding: 40px 32px;
+    background-color: transparent;
+    position: relative;
 }
 
-.markdown-body h2 {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.3em;
-    font-size: 1.5em;
-    font-weight: 600;
-    margin-top: 24px;
-    margin-bottom: 16px;
+/* Subtle parallax grid (preview-only) */
+.markdown-body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--panel-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--panel-border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.05;
+    z-index: -1;
+    transform: translate(
+        calc(var(--mouse-x) * -8px),
+        calc(var(--mouse-y) * -8px)
+    );
+    transition: transform 0.12s ease-out;
+    pointer-events: none;
 }
 
-.markdown-body hr {
-    height: 1px;
-    padding: 0;
-    margin: 24px 0;
-    background-color: var(--border-color);
-    border: 0;
+[data-reduce-motion="true"] .markdown-body::before {
+    transform: none;
+    transition: none;
 }
 
-.markdown-body a {
-    color: var(--link-color);
+/* --- Typography --- */
+h2 {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 40px 0 16px;
+    border: none;
+}
+
+h2::before {
+    content: '▸ ';
+    color: var(--accent);
+}
+
+p { font-size: 14px; color: var(--text-dark); margin: 0 0 12px; }
+
+hr {
+    border: none;
+    border-top: 1px solid var(--hr-color);
+    margin: 40px 0;
+}
+
+a {
+    color: var(--accent);
     text-decoration: none;
 }
 
-.markdown-body a:hover {
-    text-decoration: underline;
+a:hover { text-decoration: underline; }
+
+code {
+    font-family: inherit;
+    font-size: 11px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 3px;
+    padding: 1px 5px;
 }
 
-.markdown-body code {
-    padding: 0.2em 0.4em;
-    margin: 0;
-    font-size: 85%;
-    background-color: rgba(110, 118, 129, 0.1);
-    border-radius: 6px;
-    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+/* --- Sections --- */
+.section-hero {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
 }
 
-/* Make SVG injections fit */
-.svg-container svg {
-    width: 100%;
+.section-hero img {
+    max-width: 100%;
     height: auto;
-    display: block;
 }
 
-html[data-reduce-motion="true"] * {
-    animation-play-state: paused !important;
+.section-center {
+    display: flex;
+    justify-content: center;
+}
+
+.section-center img {
+    max-width: 100%;
+    height: auto;
+}
+
+.project-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+}
+
+.project-grid img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section-footer {
+    text-align: center;
+    padding: 16px 0 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.section-footer p { color: var(--text-muted); }
+.section-footer code {
+    background: transparent;
+    border: none;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+/* --- Selected Work --- */
+.selected-work-item {
+    padding: 20px 20px 20px 18px;
+    border-left: 2px solid var(--panel-border);
+    margin-bottom: 28px;
+    border-radius: 0 4px 4px 0;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    cursor: default;
+}
+
+.selected-work-item:hover {
+    background: var(--panel-bg);
+    border-left-color: var(--accent);
+    transform: translateX(3px);
+}
+
+.selected-work-item h3 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text-dark);
+    border: none;
+}
+
+.work-desc {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.work-tech {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.work-tech code {
+    margin-right: 4px;
+}
+
+.work-link {
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+}
+
+.selected-work-item:hover .work-link {
+    opacity: 1;
 }

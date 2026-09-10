@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="600" height="350">
+  <defs>
+    <style>
+      :root {
+        --bg: #f4f5f5;
+        --grid-line: rgba(0, 0, 0, 0.05);
+        --panel-bg: #e8e8e8;
+        --panel-border: #111111;
+        --window-bar: #cccccc;
+        --text-dark: #111111;
+        --text-muted: #555555;
+        --accent: #0033cc;
+      }
+      .bg { fill: var(--bg); }
+      .grid-line { stroke: var(--grid-line); stroke-width: 1; }
+      .border { stroke: var(--panel-border); stroke-width: 2; fill: none; }
+      .border-thin { stroke: var(--panel-border); stroke-width: 1; fill: none; }
+      .panel { fill: var(--panel-bg); stroke: var(--panel-border); stroke-width: 2; }
+      .window-bar { fill: var(--window-bar); stroke: var(--panel-border); stroke-width: 2; }
+      .fill { fill: var(--panel-border); }
+      
+      .text-head { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; font-weight: bold; fill: var(--text-dark); }
+      .text-sub { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: var(--text-muted); }
+      .text-title { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; font-weight: bold; fill: var(--text-dark); }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-2px); }
+      }
+      .anim { animation: float 6s ease-in-out infinite; }
+
+      @keyframes scan-line {
+        0% { transform: translateY(0); opacity: 0; }
+        10% { opacity: 0.5; }
+        90% { opacity: 0.5; }
+        100% { transform: translateY(220px); opacity: 0; }
+      }
+      .scanner { fill: var(--accent); animation: scan-line 6s linear infinite; }
+      
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transform: none !important; }
+        .scanner { display: none; }
+      }
+    </style>
+    <pattern id="bgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
+    </pattern>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#bgGrid)" />
+  
+  <!-- Outer Window -->
+  <rect x="20" y="20" width="560" height="310" class="panel" />
+  <rect x="20" y="20" width="560" height="24" class="window-bar" />
+  <line x1="20" y1="44" x2="580" y2="44" class="border" />
+  <line x1="60" y1="28" x2="540" y2="28" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="32" x2="540" y2="32" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="36" x2="540" y2="36" class="border-thin" opacity="0.5" />
+  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+  
+  <!-- Content Area -->
+  <rect x="30" y="54" width="540" height="266" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <text x="50" y="80" class="text-title">04 / SYSTEM COMPONENTS</text>
+
+  <!-- Scan Line -->
+  <g transform="translate(40, 90)">
+    <rect x="0" y="0" width="520" height="1" class="scanner" />
+  </g>
+
+  <!-- Row 1 Left -->
+  <g transform="translate(50, 105)">
+    <g class="anim">
+      <rect x="0" y="3" width="6" height="6" class="fill" />
+      <text x="15" y="10" class="text-head">LANGUAGES</text>
+      <text x="15" y="25" class="text-sub">Python</text>
+      <text x="15" y="40" class="text-sub">JavaScript</text>
+      <text x="15" y="55" class="text-sub">Java</text>
+      <text x="15" y="70" class="text-sub">C++</text>
+      <text x="15" y="85" class="text-sub">SQL</text>
+    </g>
+  </g>
+
+  <!-- Row 1 Right -->
+  <g transform="translate(300, 105)">
+    <g class="anim" style="animation-delay: 1s;">
+      <rect x="0" y="3" width="6" height="6" class="fill" />
+      <text x="15" y="10" class="text-head">FRONTEND</text>
+      <text x="15" y="25" class="text-sub">React</text>
+      <text x="15" y="40" class="text-sub">TypeScript</text>
+      <text x="15" y="55" class="text-sub">HTML5</text>
+      <text x="15" y="70" class="text-sub">CSS3</text>
+      <text x="15" y="85" class="text-sub">Tailwind CSS</text>
+    </g>
+  </g>
+
+  <!-- Row 2 Left -->
+  <g transform="translate(50, 215)">
+    <g class="anim" style="animation-delay: 2s;">
+      <rect x="0" y="3" width="6" height="6" class="fill" />
+      <text x="15" y="10" class="text-head">BACKEND</text>
+      <text x="15" y="25" class="text-sub">FastAPI</text>
+      <text x="15" y="40" class="text-sub">Node.js</text>
+      <text x="15" y="55" class="text-sub">Express.js</text>
+    </g>
+  </g>
+
+  <!-- Row 2 Right -->
+  <g transform="translate(300, 215)">
+    <g class="anim" style="animation-delay: 0.5s;">
+      <rect x="0" y="3" width="6" height="6" class="fill" />
+      <text x="15" y="10" class="text-head">AI ENGINEERING</text>
+      <text x="15" y="25" class="text-sub">AI Agents</text>
+      <text x="15" y="40" class="text-sub">LangChain</text>
+      <text x="15" y="55" class="text-sub">LangGraph</text>
+      <text x="15" y="70" class="text-sub">RAG &amp; MCP</text>
+    </g>
+  </g>
+
+  <!-- Row 3 Left -->
+  <g transform="translate(180, 215)">
+    <g class="anim" style="animation-delay: 1.5s;">
+      <rect x="0" y="3" width="6" height="6" class="fill" />
+      <text x="15" y="10" class="text-head">DATABASES</text>
+      <text x="15" y="25" class="text-sub">MongoDB</text>
+      <text x="15" y="40" class="text-sub">SQLite</text>
+      <text x="15" y="55" class="text-sub">Firebase</text>
+    </g>
+  </g>
+
+  <!-- Row 3 Right -->
+  <g transform="translate(450, 215)">
+    <g class="anim" style="animation-delay: 2.5s;">
+      <rect x="0" y="3" width="6" height="6" class="fill" />
+      <text x="15" y="10" class="text-head">TOOLS</text>
+      <text x="15" y="25" class="text-sub">Git / GitHub</text>
+      <text x="15" y="40" class="text-sub">VS Code</text>
+      <text x="15" y="55" class="text-sub">Postman</text>
+      <text x="15" y="70" class="text-sub">Playwright</text>
+    </g>
+  </g>
+
+</svg>

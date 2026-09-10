@@ -8,22 +8,9 @@
         --panel-border: #111111;
         --window-bar: #cccccc;
         --text-dark: #111111;
-        --text-muted: #666666;
+        --text-muted: #555555;
         --accent: #008800;
         --accent-alt: #0033cc;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0d1117;
-          --grid-line: rgba(255, 255, 255, 0.05);
-          --panel-bg: #161b22;
-          --panel-border: #444c56;
-          --window-bar: #21262d;
-          --text-dark: #c9d1d9;
-          --text-muted: #8b949e;
-          --accent: #3fb950;
-          --accent-alt: #58a6ff;
-        }
       }
       .bg { fill: var(--bg); }
       .grid-line { stroke: var(--grid-line); stroke-width: 1; }
@@ -45,9 +32,23 @@
         0%, 100% { opacity: 1; }
         50% { opacity: 0.6; }
       }
+      @keyframes signal-bus {
+        0% { transform: translateX(0); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(500px); opacity: 0; }
+      }
+      
       .travel-pixel { animation: signal-travel 4s cubic-bezier(0.2, 0, 0.8, 1) infinite; }
       .pulse { animation: active-pulse 3s infinite; }
       .pulse-alt { animation: active-pulse 4s infinite; animation-delay: 1s; }
+      .bus-dot { fill: var(--accent-alt); animation: signal-bus 5s linear infinite; }
+      
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; }
+        .travel-pixel, .bus-dot { display: none; }
+      }
     </style>
     <pattern id="bgGrid" width="10" height="10" patternUnits="userSpaceOnUse">
       <path d="M 10 0 L 0 0 0 10" fill="none" class="grid-line" />
@@ -57,25 +58,24 @@
   <rect width="100%" height="100%" class="bg" />
   <rect width="100%" height="100%" fill="url(#bgGrid)" />
   
-  <rect x="20" y="20" width="460" height="210" class="panel" />
+  <rect x="20" y="10" width="460" height="210" class="panel" />
   
-  <!-- Retro Mac Header -->
-  <rect x="20" y="20" width="460" height="24" class="window-bar" />
-  <line x1="20" y1="44" x2="480" y2="44" class="border" />
-  <line x1="50" y1="28" x2="440" y2="28" class="border-thin" opacity="0.5" />
-  <line x1="50" y1="32" x2="440" y2="32" class="border-thin" opacity="0.5" />
-  <line x1="50" y1="36" x2="440" y2="36" class="border-thin" opacity="0.5" />
-  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+  <rect x="20" y="10" width="460" height="24" class="window-bar" />
+  <line x1="20" y1="34" x2="480" y2="34" class="border" />
+  <line x1="50" y1="18" x2="440" y2="18" class="border-thin" opacity="0.5" />
+  <line x1="50" y1="22" x2="440" y2="22" class="border-thin" opacity="0.5" />
+  <line x1="50" y1="26" x2="440" y2="26" class="border-thin" opacity="0.5" />
+  <rect x="28" y="16" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
   
-  <rect x="30" y="54" width="440" height="166" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+  <rect x="30" y="44" width="440" height="166" class="bg" stroke="var(--panel-border)" stroke-width="1" />
 
-  <text x="50" y="85" class="text-title">03 / SYSTEM STATUS</text>
+  <text x="50" y="75" class="text-title">03 / SYSTEM STATUS</text>
 
-  <!-- AI SYSTEMS -->
-  <g transform="translate(50, 110)">
+  <g transform="translate(50, 100)">
     <text x="0" y="10" class="text">AI SYSTEMS</text>
     <!-- Pixel Bar -->
     <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="150" y="0" width="70" height="12" class="indicator" opacity="0.3" />
     <rect x="152" y="2" width="6" height="8" class="indicator travel-pixel" style="animation-duration: 2.5s;" />
     <!-- Node -->
     <rect x="260" y="2" width="8" height="8" class="indicator pulse" />
@@ -83,11 +83,11 @@
     <text x="280" y="10" class="text">ONLINE</text>
   </g>
 
-  <!-- AGENTIC AI -->
-  <g transform="translate(50, 140)">
+  <g transform="translate(50, 130)">
     <text x="0" y="10" class="text">AGENTIC AI</text>
     <!-- Pixel Bar -->
     <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="150" y="0" width="60" height="12" class="indicator-alt" opacity="0.3" />
     <rect x="152" y="2" width="6" height="8" class="indicator-alt travel-pixel" style="animation-duration: 3s; animation-delay: 1s;" />
     <!-- Node -->
     <rect x="260" y="2" width="8" height="8" class="indicator-alt pulse-alt" />
@@ -95,11 +95,11 @@
     <text x="280" y="10" class="text">ACTIVE</text>
   </g>
 
-  <!-- FULL-STACK -->
-  <g transform="translate(50, 170)">
+  <g transform="translate(50, 160)">
     <text x="0" y="10" class="text">FULL-STACK</text>
     <!-- Pixel Bar -->
     <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="150" y="0" width="80" height="12" class="indicator" opacity="0.3" />
     <rect x="152" y="2" width="6" height="8" class="indicator travel-pixel" style="animation-duration: 4s;" />
     <!-- Node -->
     <rect x="260" y="2" width="8" height="8" class="indicator pulse" />
@@ -107,11 +107,11 @@
     <text x="280" y="10" class="text">ONLINE</text>
   </g>
 
-  <!-- BUILD PIPELINE -->
-  <g transform="translate(50, 200)">
+  <g transform="translate(50, 190)">
     <text x="0" y="10" class="text">BUILD PIPELINE</text>
     <!-- Pixel Bar -->
     <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="150" y="0" width="40" height="12" class="indicator-alt" opacity="0.3" />
     <rect x="152" y="2" width="6" height="8" class="indicator-alt travel-pixel" style="animation-duration: 5s; animation-delay: 2s;" />
     <!-- Node -->
     <rect x="260" y="2" width="8" height="8" class="indicator-alt pulse-alt" />
