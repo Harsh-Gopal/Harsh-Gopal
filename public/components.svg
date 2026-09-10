@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300">
+  <defs>
+    <style>
+      :root {
+        --bg: #fcfcfc;
+        --border: #222222;
+        --text: #111111;
+        --accent: #0044cc;
+        --grid: rgba(0,0,0,0.05);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d1117;
+          --border: #444c56;
+          --text: #c9d1d9;
+          --accent: #58a6ff;
+          --grid: rgba(255,255,255,0.05);
+        }
+      }
+      .bg { fill: var(--bg); }
+      .border { stroke: var(--border); stroke-width: 1; fill: none; }
+      .border-thick { stroke: var(--border); stroke-width: 2; fill: none; }
+      .text { font-family: monospace; font-size: 13px; fill: var(--text); }
+      .text-head { font-family: monospace; font-size: 14px; font-weight: bold; fill: var(--text); }
+      .grid-line { stroke: var(--grid); stroke-width: 1; }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      .anim { animation: float 4s ease-in-out infinite; }
+    </style>
+    <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#smallGrid)" />
+  
+  <rect x="20" y="20" width="560" height="260" class="border-thick" />
+  
+  <text x="40" y="50" class="text-head">04 / SYSTEM COMPONENTS</text>
+  <path d="M 40 60 L 560 60" class="border-thick" stroke-dasharray="4 4" />
+
+  <!-- Blocks -->
+  <!-- LANGUAGES -->
+  <g transform="translate(40, 80)" class="anim" style="animation-delay: 0s;">
+    <rect x="0" y="0" width="160" height="80" class="border" />
+    <text x="10" y="20" class="text-head" fill="var(--accent)">LANGUAGES</text>
+    <text x="10" y="40" class="text">Python, JavaScript</text>
+    <text x="10" y="55" class="text">TypeScript, Java</text>
+    <text x="10" y="70" class="text">C++, SQL</text>
+  </g>
+
+  <!-- FRONTEND -->
+  <g transform="translate(220, 80)" class="anim" style="animation-delay: 1s;">
+    <rect x="0" y="0" width="160" height="80" class="border" />
+    <text x="10" y="20" class="text-head" fill="var(--accent)">FRONTEND</text>
+    <text x="10" y="40" class="text">React, Next.js</text>
+    <text x="10" y="55" class="text">HTML5, CSS3</text>
+    <text x="10" y="70" class="text">Tailwind CSS</text>
+  </g>
+
+  <!-- BACKEND -->
+  <g transform="translate(400, 80)" class="anim" style="animation-delay: 2s;">
+    <rect x="0" y="0" width="160" height="80" class="border" />
+    <text x="10" y="20" class="text-head" fill="var(--accent)">BACKEND</text>
+    <text x="10" y="40" class="text">FastAPI</text>
+    <text x="10" y="55" class="text">Node.js</text>
+    <text x="10" y="70" class="text">Express.js</text>
+  </g>
+
+  <!-- AI -->
+  <g transform="translate(40, 180)" class="anim" style="animation-delay: 1.5s;">
+    <rect x="0" y="0" width="340" height="80" class="border" />
+    <text x="10" y="20" class="text-head" fill="var(--accent)">AI ENGINEERING</text>
+    <text x="10" y="40" class="text">AI Agents, LangChain, LangGraph, RAG</text>
+    <text x="10" y="55" class="text">Prompt Engineering, LLM APIs</text>
+    <text x="10" y="70" class="text">MCP, n8n</text>
+  </g>
+
+  <!-- TOOLS -->
+  <g transform="translate(400, 180)" class="anim" style="animation-delay: 0.5s;">
+    <rect x="0" y="0" width="160" height="80" class="border" />
+    <text x="10" y="20" class="text-head" fill="var(--accent)">TOOLS</text>
+    <text x="10" y="40" class="text">Git, GitHub</text>
+    <text x="10" y="55" class="text">Firebase, MongoDB</text>
+    <text x="10" y="70" class="text">Docker, Vercel</text>
+  </g>
+
+</svg>

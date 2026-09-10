@@ -1,28 +1,22 @@
 # Design System
 
-The visual design language across the README and Arcade relies on the concepts of:
-1. **Premium Minimalism**: Restrained, deliberate use of visual elements without clutter.
-2. **Terminal Aesthetics**: Monospace fonts, bracketed interfaces, high-contrast text.
-3. **East Asian Influence**: Distinctive geometric characters (via Noto Sans SC) that add an architectural feel to the typography.
+The visual design language across the README relies on the concepts of:
+1. **Retro Macintosh Geometry**: Restrained, deliberate use of visual elements, thin borders, square corners, and simple controls.
+2. **Pixel-grid Construction**: The fundamental unit of the design is the square pixel. Clusters, grids, and matrices are used to imply technical depth and structure.
+3. **Ambient Motion**: Smooth, looping, slow animations (e.g. `opacity`, `transform`) using CSS keyframes directly within SVGs.
 
 ## Typography
-- **Primary Reading**: `Inter`
-- **Terminal & Code**: `JetBrains Mono`
-- **Accents/Asian Script**: `Noto Sans SC`
+- **Primary Text & Code**: `monospace` (System monospace font such as Courier, Consolas, or SF Mono).
+- **Hierarchy**: All uppercase section headers, subtle monospace text for technical data.
 
 ## Color Palette
-The colors are managed directly inside Tailwind's v4 `@theme inline` structure within `globals.css`:
-- **Backgrounds**: `var(--color-background)` - pitch black `#050505`.
-- **Foregrounds**: `var(--color-foreground)` - off-white `#fafafa`.
-- **Neutrals**: Sleek grays `#121212`, `#1e1e1e`, `#404040` for borders, unused elements, and shadows.
-- **Accent**: Cyan/Teal `#00E5FF` used for active states, terminal headers, and highlight glows.
+The colors are managed directly inside the SVGs via CSS variables mapping to system themes:
+- **Light Mode**: Off-white background `#fcfcfc`, charcoal borders `#222222`, muted accent `#0044cc`.
+- **Dark Mode**: Dark charcoal background `#0d1117`, light gray borders `#444c56`, bright accent `#58a6ff`.
 
-## Layout & Spacing
-- Borders are sharply rounded (2px to 4px) mimicking hardware screens.
-- Generous padding ensures the text feels open despite the dark background.
-- UI elements emphasize borders over solid fill to maintain the lightweight terminal feel.
-
-## Animation Principles
-- Reduced motion: Avoid excessive slide-ins or bouncing.
-- Transitions: Focus on opacity and subtle color changes (hover states, focus rings).
-- The SVG greeting utilizes simple CSS keyframe opacity and transform cycling to maintain elegance.
+## Design Rules for Maintainers / AI Agents
+- **No Arcade**: Do not bring back the interactive arcade Next.js app.
+- **No Neon Cyberpunk**: Do not use highly saturated neon colors or generic hacker aesthetics.
+- **No Generic Badges**: Do not use simple shield.io badge collections.
+- **No External JavaScript**: Do not use Next.js, React, or JavaScript running in the browser for visuals. SVGs must be strictly self-contained.
+- **Preserve the Pixel Grid**: Any new designs must utilize the pixel grid and geometric styling.

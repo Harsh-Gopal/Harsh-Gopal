@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <style>
+      :root {
+        --bg: #f5f5f5;
+        --panel: #e0e0e0;
+        --border: #333333;
+        --text-main: #111111;
+        --text-sub: #555555;
+        --accent: #0044cc;
+        --grid: rgba(0,0,0,0.05);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d1117;
+          --panel: #161b22;
+          --border: #30363d;
+          --text-main: #c9d1d9;
+          --text-sub: #8b949e;
+          --accent: #58a6ff;
+          --grid: rgba(255,255,255,0.05);
+        }
+      }
+      
+      .bg { fill: var(--bg); transition: fill 0.3s ease; }
+      .grid-line { stroke: var(--grid); stroke-width: 1; }
+      .panel { fill: var(--panel); stroke: var(--border); stroke-width: 2; }
+      .panel-header { fill: var(--border); }
+      .text-title { fill: var(--text-main); font-family: monospace; font-size: 32px; font-weight: bold; letter-spacing: 4px; }
+      .text-subtitle { fill: var(--accent); font-family: monospace; font-size: 16px; letter-spacing: 2px; }
+      .text-term { fill: var(--text-main); font-family: monospace; font-size: 14px; }
+      .text-term-prompt { fill: var(--text-sub); font-family: monospace; font-size: 14px; }
+      
+      /* Animations */
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 0.3; }
+      }
+      @keyframes typing {
+        0% { width: 0; }
+        30%, 100% { width: 450px; }
+      }
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      @keyframes scanline {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(400px); }
+      }
+      
+      .float-group { animation: float 10s ease-in-out infinite; }
+      .pixel-block { fill: var(--border); animation: pulse 4s ease-in-out infinite; }
+      .typing-clip rect { animation: typing 8s steps(40, end) infinite; }
+      .cursor { animation: blink 1s step-end infinite; fill: var(--accent); }
+      .scan { stroke: var(--accent); stroke-width: 1; opacity: 0.1; animation: scanline 8s linear infinite; }
+    </style>
+    <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
+    </pattern>
+    <clipPath id="typingClip" class="typing-clip">
+      <rect x="0" y="0" height="30" width="450" />
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" class="bg" />
+  
+  <!-- Pixel Grid -->
+  <rect width="100%" height="100%" fill="url(#smallGrid)" />
+  
+  <!-- Scanline -->
+  <line x1="0" y1="0" x2="800" y2="0" class="scan" />
+
+  <!-- Animated Geometry (Retro aesthetic) -->
+  <g class="float-group" style="transform-origin: center;">
+    <rect x="650" y="80" width="80" height="80" fill="none" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 4" />
+    <rect x="670" y="100" width="40" height="40" fill="var(--panel)" stroke="var(--border)" stroke-width="2" />
+    <!-- Pixel art stairs -->
+    <g class="pixel-block" style="animation-delay: 1s;">
+      <rect x="630" y="140" width="10" height="10" />
+      <rect x="640" y="140" width="10" height="20" />
+      <rect x="650" y="140" width="10" height="30" />
+    </g>
+  </g>
+
+  <!-- Main System Panel -->
+  <g transform="translate(60, 60)">
+    <!-- Panel Shadow/Depth -->
+    <rect x="10" y="10" width="560" height="280" fill="var(--border)" opacity="0.1" />
+    <!-- Panel Body -->
+    <rect x="0" y="0" width="560" height="280" class="panel" rx="4" />
+    <!-- Panel Header -->
+    <path d="M 0 4 Q 0 0 4 0 L 556 0 Q 560 0 560 4 L 560 24 L 0 24 Z" class="panel-header" />
+    <!-- Header Buttons -->
+    <rect x="12" y="8" width="8" height="8" fill="var(--bg)" />
+    <rect x="28" y="8" width="8" height="8" fill="var(--bg)" />
+    <rect x="44" y="8" width="8" height="8" fill="var(--bg)" />
+    
+    <!-- Title Area -->
+    <g transform="translate(40, 90)">
+      <text x="0" y="0" class="text-title">H A R S H   G O P A L</text>
+      <text x="0" y="30" class="text-subtitle">AI ENGINEER // FULL-STACK</text>
+    </g>
+    
+    <!-- Terminal Area -->
+    <g transform="translate(40, 180)">
+      <!-- Command -->
+      <text x="0" y="0" class="text-term-prompt">$ echo "Building intelligent software for a smarter tomorrow"</text>
+      
+      <!-- Output / Typing -->
+      <g transform="translate(0, 20)">
+        <text x="0" y="15" class="text-term" clip-path="url(#typingClip)">&gt; RUN_SEQUENCE_INITIALIZED</text>
+        <rect x="210" y="3" width="10" height="14" class="cursor" />
+      </g>
+    </g>
+    
+    <!-- Pixel decorative element -->
+    <g transform="translate(480, 200)" class="pixel-block">
+      <rect x="0" y="0" width="8" height="8" />
+      <rect x="8" y="8" width="8" height="8" />
+      <rect x="16" y="0" width="8" height="8" />
+      <rect x="24" y="8" width="8" height="8" />
+    </g>
+  </g>
+</svg>

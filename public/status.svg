@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" width="500" height="250">
+  <defs>
+    <style>
+      :root {
+        --bg: #f5f5f5;
+        --panel: #e0e0e0;
+        --border: #333333;
+        --text: #111111;
+        --accent: #008800;
+        --accent-alt: #0044cc;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0d1117;
+          --panel: #161b22;
+          --border: #30363d;
+          --text: #c9d1d9;
+          --accent: #3fb950;
+          --accent-alt: #58a6ff;
+        }
+      }
+      .bg { fill: var(--bg); }
+      .panel { fill: var(--panel); stroke: var(--border); stroke-width: 2; }
+      .text { font-family: monospace; font-size: 14px; fill: var(--text); }
+      .indicator { fill: var(--accent); }
+      .indicator-alt { fill: var(--accent-alt); }
+      
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0.3; }
+      }
+      @keyframes scan {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(20px); }
+      }
+      .blink { animation: blink 2s infinite; }
+      .blink-fast { animation: blink 1s infinite; }
+      .bar-anim { animation: scan 4s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" class="bg" />
+  
+  <!-- Panel -->
+  <rect x="20" y="20" width="460" height="210" class="panel" />
+  <rect x="20" y="20" width="460" height="30" fill="var(--border)" />
+  <text x="35" y="40" font-family="monospace" font-size="14px" font-weight="bold" fill="var(--bg)">03 / SYSTEM STATUS</text>
+  
+  <!-- AI SYSTEMS -->
+  <g transform="translate(40, 80)">
+    <text x="0" y="15" class="text">AI SYSTEMS</text>
+    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
+    <rect x="180" y="5" width="100" height="12" fill="var(--border)" />
+    <circle cx="320" cy="11" r="5" class="indicator blink" />
+    <text x="340" y="15" class="text">ONLINE</text>
+  </g>
+
+  <!-- AGENTIC AI -->
+  <g transform="translate(40, 120)">
+    <text x="0" y="15" class="text">AGENTIC AI</text>
+    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
+    <rect x="180" y="5" width="85" height="12" class="indicator-alt bar-anim" />
+    <circle cx="320" cy="11" r="5" class="indicator-alt blink-fast" />
+    <text x="340" y="15" class="text">ACTIVE</text>
+  </g>
+
+  <!-- FULL-STACK -->
+  <g transform="translate(40, 160)">
+    <text x="0" y="15" class="text">FULL-STACK</text>
+    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
+    <rect x="180" y="5" width="100" height="12" fill="var(--border)" />
+    <circle cx="320" cy="11" r="5" class="indicator blink" style="animation-delay: 1s;" />
+    <text x="340" y="15" class="text">ONLINE</text>
+  </g>
+
+  <!-- BUILD PIPELINE -->
+  <g transform="translate(40, 200)">
+    <text x="0" y="15" class="text">BUILD PIPELINE</text>
+    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
+    <rect x="180" y="5" width="60" height="12" class="indicator-alt bar-anim" style="animation-delay: 2s;" />
+    <circle cx="320" cy="11" r="5" class="indicator-alt blink" style="animation-delay: 0.5s;" />
+    <text x="340" y="15" class="text">RUNNING</text>
+  </g>
+</svg>

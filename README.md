@@ -1,82 +1,57 @@
 <div align="center">
 
-<img src="./public/greeting.svg" alt="Hello in multiple languages" width="800" height="120" />
-
-# ＨＡＲＳＨ　ＧＯＰＡＬ
-### AI Engineer // Full-Stack Developer
-
-```bash
-$ echo "Building intelligent software for a smarter tomorrow"
-> RUN_SEQUENCE_INITIALIZED
-```
-
-<br/>
+<img src="./public/hero.svg" alt="Harsh Gopal - AI Engineer // Full-Stack" width="800" />
 
 </div>
 
 ## 01 / ABOUT
 
-Specializing in **Agentic AI** and **intelligent software**, I build robust, full-stack products that bridge experimental AI capabilities with practical, scalable applications. My focus is on creating dynamic, premium experiences from complex data.
+I am an **AI Engineer and Full-Stack Developer** focused on building intelligent software for a smarter tomorrow. I specialize in designing and engineering **Agentic AI systems**, combining modern LLM orchestration with robust backend infrastructure and premium frontend interfaces. My approach is deeply technical, slightly experimental, and always optimized for scale.
 
 ---
 
 ## 02 / CURRENTLY BUILDING
 
-<table width="100%">
-  <tr>
-    <td width="50%">
-      <h3>CartRadar</h3>
-      <p>Real-time quick-commerce inventory aggregator.</p>
-    </td>
-    <td width="50%">
-      <h3>MySphere</h3>
-      <p>Cross-device environment & ecosystem.</p>
-    </td>
-  </tr>
-</table>
+<div align="center">
+
+<img src="./public/cartradar.svg" alt="Project 01: Cart Radar" width="600" />
+
+<br/><br/>
+
+<img src="./public/mysphere.svg" alt="Project 02: MySphere" width="600" />
+
+</div>
 
 ---
 
-## 03 / TECH STACK
-
-<p align="left">
-  <code>Python</code>
-  <code>TypeScript</code>
-  <code>JavaScript</code>
-  <code>Java</code>
-  <code>C++</code>
-  <br/><br/>
-  <code>React</code>
-  <code>Next.js</code>
-  <code>FastAPI</code>
-  <code>Node.js</code>
-  <br/><br/>
-  <code>LangChain</code>
-  <code>LangGraph</code>
-  <code>RAG</code>
-  <code>MCP</code>
-  <code>LLM APIs</code>
-  <br/><br/>
-  <code>Firebase</code>
-  <code>SQL</code>
-  <code>n8n</code>
-  <code>Git</code>
-</p>
-
----
-
-## 04 / ARCADE
+## 03 / SYSTEM STATUS
 
 <div align="center">
-  <p>I built an interactive developer arcade directly into my profile. Experience custom-built mini-games rendered with a terminal-inspired aesthetic.</p>
-  
-  <h3>[01] TIC-TAC-TOE &nbsp;&nbsp;|&nbsp;&nbsp; [02] TETRIS &nbsp;&nbsp;|&nbsp;&nbsp; [03] DINO RUN</h3>
+<img src="./public/status.svg" alt="System Status Indicators" width="500" />
+</div>
 
-  <br/>
+---
 
-  <a href="https://<YOUR_DEPLOYED_URL>/arcade">
-    <img src="https://img.shields.io/badge/%E2%96%B6%20ENTER%20THE%20ARCADE-00E5FF?style=for-the-badge&logoColor=black&color=050505&labelColor=00E5FF" alt="Enter the Arcade" />
-  </a>
+## 04 / SYSTEM COMPONENTS
+
+<div align="center">
+<img src="./public/components.svg" alt="System Components / Tech Stack" width="600" />
+</div>
+
+---
+
+## 05 / SELECTED WORK
+
+- **Cart Radar**: Real-Time Quick-Commerce Inventory Aggregator.
+- **MySphere**: Cross-device environment & ecosystem for seamless syncing.
+- **Adaptive 3D Gameplay**: Experimental implementations of AI in adaptive 3D environments.
+
+---
+
+## 06 / SYSTEM ACTIVITY
+
+<div align="center">
+<img src="./public/activity.svg" alt="Contribution Matrix" width="664" />
 </div>
 
 ---
@@ -87,5 +62,5 @@ Specializing in **Agentic AI** and **intelligent software**, I build robust, ful
     <a href="#">LinkedIn</a> •
     <a href="#">Portfolio</a>
   </p>
-  <p><code>SYSTEM.ONLINE // v1.0.0</code></p>
+  <p><code>SYSTEM.ONLINE // v2.0.0</code></p>
 </div>
