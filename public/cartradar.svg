@@ -2,87 +2,120 @@
   <defs>
     <style>
       :root {
-        --bg: #fcfcfc;
-        --border: #222222;
-        --accent: #0044cc;
-        --grid: rgba(0,0,0,0.05);
+        --bg: #f4f5f5;
+        --grid-line: rgba(0, 0, 0, 0.05);
+        --panel-bg: #e8e8e8;
+        --panel-border: #111111;
+        --window-bar: #cccccc;
+        --text-dark: #111111;
+        --text-muted: #666666;
+        --accent: #0033cc;
       }
       @media (prefers-color-scheme: dark) {
         :root {
           --bg: #0d1117;
-          --border: #444c56;
+          --grid-line: rgba(255, 255, 255, 0.05);
+          --panel-bg: #161b22;
+          --panel-border: #444c56;
+          --window-bar: #21262d;
+          --text-dark: #c9d1d9;
+          --text-muted: #8b949e;
           --accent: #58a6ff;
-          --grid: rgba(255,255,255,0.05);
         }
       }
       .bg { fill: var(--bg); }
-      .border { stroke: var(--border); stroke-width: 2; fill: none; }
-      .fill { fill: var(--border); }
-      .grid-line { stroke: var(--grid); stroke-width: 1; }
+      .grid-line { stroke: var(--grid-line); stroke-width: 1; }
+      .border { stroke: var(--panel-border); stroke-width: 2; fill: none; }
+      .border-thin { stroke: var(--panel-border); stroke-width: 1; fill: none; }
+      .panel { fill: var(--panel-bg); stroke: var(--panel-border); stroke-width: 2; }
+      .window-bar { fill: var(--window-bar); stroke: var(--panel-border); stroke-width: 2; }
+      .fill { fill: var(--panel-border); }
+      .text-title { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: bold; fill: var(--text-dark); }
+      .text-sub { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; fill: var(--text-muted); }
+      .text-node { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; fill: var(--text-dark); }
       
-      .text { font-family: monospace; font-size: 14px; fill: var(--border); }
-      .text-title { font-family: monospace; font-size: 18px; font-weight: bold; fill: var(--border); }
-      .text-sub { font-family: monospace; font-size: 12px; fill: var(--accent); }
-      
-      @keyframes dash {
-        to { stroke-dashoffset: -20; }
-      }
       @keyframes pulse {
         0%, 100% { fill-opacity: 1; }
         50% { fill-opacity: 0.3; }
       }
-      .signal {
-        stroke: var(--accent);
-        stroke-width: 2;
-        stroke-dasharray: 4 6;
-        animation: dash 1s linear infinite;
+      @keyframes dash {
+        to { stroke-dashoffset: -20; }
       }
       .pulse { animation: pulse 2s ease-in-out infinite; }
+      .signal { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 4 6; animation: dash 1s linear infinite; }
+      
+      /* Document icon */
+      .doc { fill: var(--bg); stroke: var(--panel-border); stroke-width: 1; }
     </style>
-    <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <pattern id="bgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
       <path d="M 20 0 L 0 0 0 20" fill="none" class="grid-line" />
     </pattern>
   </defs>
 
   <rect width="100%" height="100%" class="bg" />
-  <rect width="100%" height="100%" fill="url(#smallGrid)" />
+  <rect width="100%" height="100%" fill="url(#bgGrid)" />
   
-  <rect x="20" y="20" width="560" height="260" class="border" />
+  <rect x="20" y="20" width="560" height="260" class="panel" />
   
-  <!-- Title -->
-  <text x="40" y="50" class="text-title">PROJECT 01 // CART RADAR</text>
-  <text x="40" y="70" class="text-sub">Real-Time Quick-Commerce Inventory Aggregator</text>
+  <!-- Mac-style Window Header -->
+  <rect x="20" y="20" width="560" height="24" class="window-bar" />
+  <line x1="20" y1="44" x2="580" y2="44" class="border" />
+  <line x1="60" y1="28" x2="540" y2="28" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="32" x2="540" y2="32" class="border-thin" opacity="0.5" />
+  <line x1="60" y1="36" x2="540" y2="36" class="border-thin" opacity="0.5" />
+  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
   
-  <!-- Diagram -->
-  <!-- Central Hub -->
-  <rect x="260" y="120" width="80" height="80" class="border" />
-  <rect x="265" y="125" width="70" height="70" class="border" />
-  <text x="300" y="165" class="text" text-anchor="middle">HUB</text>
-  
-  <!-- Nodes -->
-  <g transform="translate(100, 100)">
-    <rect x="0" y="0" width="60" height="40" class="border" />
-    <rect x="5" y="5" width="10" height="10" class="fill pulse" />
-    <text x="30" y="25" class="text-sub" text-anchor="middle">NODE A</text>
-  </g>
-  <g transform="translate(100, 180)">
-    <rect x="0" y="0" width="60" height="40" class="border" />
-    <rect x="5" y="5" width="10" height="10" class="fill pulse" style="animation-delay: 0.5s;" />
-    <text x="30" y="25" class="text-sub" text-anchor="middle">NODE B</text>
-  </g>
-  <g transform="translate(440, 140)">
-    <rect x="0" y="0" width="60" height="40" class="border" />
-    <rect x="5" y="5" width="10" height="10" class="fill pulse" style="animation-delay: 1s;" />
-    <text x="30" y="25" class="text-sub" text-anchor="middle">CLIENT</text>
+  <!-- Content Background -->
+  <rect x="30" y="54" width="540" height="216" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <text x="50" y="85" class="text-title">PROJECT 01: CART RADAR</text>
+  <text x="50" y="105" class="text-sub">Topology: Quick-Commerce Inventory Matrix</text>
+
+  <!-- Network Diagram -->
+  <!-- Hub -->
+  <g transform="translate(250, 140)">
+    <rect x="0" y="0" width="60" height="60" class="border" />
+    <rect x="5" y="5" width="50" height="50" class="border" />
+    <text x="30" y="34" class="text-title" text-anchor="middle">HUB</text>
   </g>
   
-  <!-- Connections -->
-  <path d="M 160 120 L 260 140" class="signal" />
-  <path d="M 160 200 L 260 180" class="signal" />
-  <path d="M 340 160 L 440 160" class="signal" />
+  <!-- Store Nodes (Left) -->
+  <g transform="translate(70, 130)">
+    <rect x="0" y="0" width="80" height="30" class="border" />
+    <rect x="5" y="5" width="8" height="8" class="fill pulse" />
+    <text x="20" y="15" class="text-node">STORE 01</text>
+    <text x="20" y="25" class="text-sub">34 items</text>
+  </g>
+  <g transform="translate(70, 180)">
+    <rect x="0" y="0" width="80" height="30" class="border" />
+    <rect x="5" y="5" width="8" height="8" class="fill pulse" style="animation-delay: 1s;" />
+    <text x="20" y="15" class="text-node">STORE 02</text>
+    <text x="20" y="25" class="text-sub">12 items</text>
+  </g>
+
+  <!-- Client Node (Right) -->
+  <g transform="translate(420, 155)">
+    <!-- Retro File Folder -->
+    <path d="M 0 5 L 15 5 L 20 10 L 60 10 L 60 40 L 0 40 Z" class="border" fill="var(--panel-bg)" />
+    <rect x="5" y="15" width="8" height="8" class="fill pulse" style="animation-delay: 0.5s;" />
+    <text x="20" y="25" class="text-node">CLIENT</text>
+    <text x="20" y="35" class="text-sub">App Sync</text>
+  </g>
   
-  <!-- Pixel Decoration -->
-  <rect x="540" y="240" width="10" height="10" class="fill" />
-  <rect x="550" y="230" width="10" height="10" class="fill" />
-  <rect x="550" y="250" width="10" height="10" class="fill" />
+  <!-- Network Paths -->
+  <!-- Store 01 to Hub -->
+  <path d="M 150 145 L 200 145 L 200 160 L 250 160" class="signal" fill="none" />
+  <!-- Store 02 to Hub -->
+  <path d="M 150 195 L 200 195 L 200 180 L 250 180" class="signal" fill="none" />
+  <!-- Hub to Client -->
+  <path d="M 310 170 L 420 170" class="signal" fill="none" />
+
+  <!-- Technical scrollbar -->
+  <rect x="550" y="55" width="18" height="214" class="panel" />
+  <line x1="550" y1="75" x2="568" y2="75" class="border" />
+  <line x1="550" y1="249" x2="568" y2="249" class="border" />
+  <rect x="552" y="80" width="14" height="40" class="fill" opacity="0.3" />
+  <!-- Scroll arrows -->
+  <path d="M 559 60 L 555 70 L 563 70 Z" class="fill" />
+  <path d="M 559 264 L 555 254 L 563 254 Z" class="fill" />
 </svg>

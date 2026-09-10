@@ -18,3 +18,18 @@ The project combines a minimal, retro computer aesthetic inspired by early windo
 - **Languages**: SVG, CSS, JavaScript (for GitHub Action generation)
 - **CI/CD**: GitHub Actions
 - **Visuals**: Handcrafted SVG vector graphics and CSS keyframe animations.
+
+## Local Preview
+To preview the SVG rendering and test dark/light themes without pushing to GitHub, you can use the built-in static preview environment.
+
+Start a lightweight local server from the repository root:
+```bash
+python3 -m http.server 4173
+```
+
+Then open your browser to:
+http://localhost:4173/preview/
+
+The preview page replicates GitHub's markdown rendering structure and loads the production SVG assets. It includes a developer toolbar (top right) to toggle between:
+- Light / Dark mode
+- Normal / Reduced Motion

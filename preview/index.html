@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Preview</title>
+    <link rel="stylesheet" href="preview.css">
+</head>
+<body>
+    <!-- Developer Controls (Outside the profile) -->
+    <div class="dev-controls">
+        <button id="theme-btn">Toggle Light Mode</button>
+        <button id="motion-btn">Toggle Reduced Motion</button>
+    </div>
+
+    <!-- Simulated GitHub README Container -->
+    <main class="markdown-body">
+        <div align="center">
+            <!-- Using SVG injection to allow CSS variable override for theme testing -->
+            <div class="svg-container" data-src="../public/hero.svg" style="max-width: 800px; width: 100%;"></div>
+        </div>
+
+        <h2>01 / ABOUT</h2>
+        <p>I am an <strong>AI Engineer and Full-Stack Developer</strong> focused on building intelligent software for a smarter tomorrow. I specialize in designing and engineering <strong>Agentic AI systems</strong>, combining modern LLM orchestration with robust backend infrastructure and premium frontend interfaces. My approach is deeply technical, slightly experimental, and always optimized for scale.</p>
+
+        <hr>
+
+        <h2>02 / CURRENTLY BUILDING</h2>
+        <div align="center">
+            <div class="svg-container" data-src="../public/cartradar.svg" style="max-width: 600px; width: 100%;"></div>
+            <br><br>
+            <div class="svg-container" data-src="../public/mysphere.svg" style="max-width: 600px; width: 100%;"></div>
+        </div>
+
+        <hr>
+
+        <h2>03 / SYSTEM STATUS</h2>
+        <div align="center">
+            <div class="svg-container" data-src="../public/status.svg" style="max-width: 500px; width: 100%;"></div>
+        </div>
+
+        <hr>
+
+        <h2>04 / SYSTEM COMPONENTS</h2>
+        <div align="center">
+            <div class="svg-container" data-src="../public/components.svg" style="max-width: 600px; width: 100%;"></div>
+        </div>
+
+        <hr>
+
+        <h2>05 / SELECTED WORK</h2>
+        <ul>
+            <li><strong>Cart Radar</strong>: Real-Time Quick-Commerce Inventory Aggregator.</li>
+            <li><strong>MySphere</strong>: Cross-device environment & ecosystem for seamless syncing.</li>
+            <li><strong>Adaptive 3D Gameplay</strong>: Experimental implementations of AI in adaptive 3D environments.</li>
+        </ul>
+
+        <hr>
+
+        <h2>06 / SYSTEM ACTIVITY</h2>
+        <div align="center">
+            <div class="svg-container" data-src="../public/activity.svg" style="max-width: 664px; width: 100%;"></div>
+        </div>
+
+        <hr>
+
+        <div align="center">
+            <p>
+                <a href="#">GitHub</a> •
+                <a href="#">LinkedIn</a> •
+                <a href="#">Portfolio</a>
+            </p>
+            <p><code>SYSTEM.ONLINE // v2.0.0</code></p>
+        </div>
+    </main>
+
+    <script src="preview.js"></script>
+</body>
+</html>

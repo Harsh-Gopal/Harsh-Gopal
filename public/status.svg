@@ -2,84 +2,120 @@
   <defs>
     <style>
       :root {
-        --bg: #f5f5f5;
-        --panel: #e0e0e0;
-        --border: #333333;
-        --text: #111111;
+        --bg: #f4f5f5;
+        --grid-line: rgba(0, 0, 0, 0.05);
+        --panel-bg: #e8e8e8;
+        --panel-border: #111111;
+        --window-bar: #cccccc;
+        --text-dark: #111111;
+        --text-muted: #666666;
         --accent: #008800;
-        --accent-alt: #0044cc;
+        --accent-alt: #0033cc;
       }
       @media (prefers-color-scheme: dark) {
         :root {
           --bg: #0d1117;
-          --panel: #161b22;
-          --border: #30363d;
-          --text: #c9d1d9;
+          --grid-line: rgba(255, 255, 255, 0.05);
+          --panel-bg: #161b22;
+          --panel-border: #444c56;
+          --window-bar: #21262d;
+          --text-dark: #c9d1d9;
+          --text-muted: #8b949e;
           --accent: #3fb950;
           --accent-alt: #58a6ff;
         }
       }
       .bg { fill: var(--bg); }
-      .panel { fill: var(--panel); stroke: var(--border); stroke-width: 2; }
-      .text { font-family: monospace; font-size: 14px; fill: var(--text); }
+      .grid-line { stroke: var(--grid-line); stroke-width: 1; }
+      .border { stroke: var(--panel-border); stroke-width: 2; fill: none; }
+      .border-thin { stroke: var(--panel-border); stroke-width: 1; fill: none; }
+      .panel { fill: var(--panel-bg); stroke: var(--panel-border); stroke-width: 2; }
+      .window-bar { fill: var(--window-bar); stroke: var(--panel-border); stroke-width: 2; }
+      .text { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; fill: var(--text-dark); }
+      .text-title { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; font-weight: bold; fill: var(--text-dark); }
       .indicator { fill: var(--accent); }
       .indicator-alt { fill: var(--accent-alt); }
       
-      @keyframes blink {
-        0%, 49% { opacity: 1; }
-        50%, 100% { opacity: 0.3; }
+      @keyframes signal-travel {
+        0% { transform: translateX(0); opacity: 1; }
+        90% { transform: translateX(80px); opacity: 1; }
+        95%, 100% { transform: translateX(80px); opacity: 0; }
       }
-      @keyframes scan {
-        0%, 100% { transform: translateX(0); }
-        50% { transform: translateX(20px); }
+      @keyframes active-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
       }
-      .blink { animation: blink 2s infinite; }
-      .blink-fast { animation: blink 1s infinite; }
-      .bar-anim { animation: scan 4s ease-in-out infinite; }
+      .travel-pixel { animation: signal-travel 4s cubic-bezier(0.2, 0, 0.8, 1) infinite; }
+      .pulse { animation: active-pulse 3s infinite; }
+      .pulse-alt { animation: active-pulse 4s infinite; animation-delay: 1s; }
     </style>
+    <pattern id="bgGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" class="grid-line" />
+    </pattern>
   </defs>
 
-  <!-- Background -->
   <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#bgGrid)" />
   
-  <!-- Panel -->
   <rect x="20" y="20" width="460" height="210" class="panel" />
-  <rect x="20" y="20" width="460" height="30" fill="var(--border)" />
-  <text x="35" y="40" font-family="monospace" font-size="14px" font-weight="bold" fill="var(--bg)">03 / SYSTEM STATUS</text>
   
+  <!-- Retro Mac Header -->
+  <rect x="20" y="20" width="460" height="24" class="window-bar" />
+  <line x1="20" y1="44" x2="480" y2="44" class="border" />
+  <line x1="50" y1="28" x2="440" y2="28" class="border-thin" opacity="0.5" />
+  <line x1="50" y1="32" x2="440" y2="32" class="border-thin" opacity="0.5" />
+  <line x1="50" y1="36" x2="440" y2="36" class="border-thin" opacity="0.5" />
+  <rect x="28" y="26" width="12" height="12" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+  
+  <rect x="30" y="54" width="440" height="166" class="bg" stroke="var(--panel-border)" stroke-width="1" />
+
+  <text x="50" y="85" class="text-title">03 / SYSTEM STATUS</text>
+
   <!-- AI SYSTEMS -->
-  <g transform="translate(40, 80)">
-    <text x="0" y="15" class="text">AI SYSTEMS</text>
-    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
-    <rect x="180" y="5" width="100" height="12" fill="var(--border)" />
-    <circle cx="320" cy="11" r="5" class="indicator blink" />
-    <text x="340" y="15" class="text">ONLINE</text>
+  <g transform="translate(50, 110)">
+    <text x="0" y="10" class="text">AI SYSTEMS</text>
+    <!-- Pixel Bar -->
+    <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="152" y="2" width="6" height="8" class="indicator travel-pixel" style="animation-duration: 2.5s;" />
+    <!-- Node -->
+    <rect x="260" y="2" width="8" height="8" class="indicator pulse" />
+    <rect x="260" y="2" width="8" height="8" fill="none" class="border-thin" />
+    <text x="280" y="10" class="text">ONLINE</text>
   </g>
 
   <!-- AGENTIC AI -->
-  <g transform="translate(40, 120)">
-    <text x="0" y="15" class="text">AGENTIC AI</text>
-    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
-    <rect x="180" y="5" width="85" height="12" class="indicator-alt bar-anim" />
-    <circle cx="320" cy="11" r="5" class="indicator-alt blink-fast" />
-    <text x="340" y="15" class="text">ACTIVE</text>
+  <g transform="translate(50, 140)">
+    <text x="0" y="10" class="text">AGENTIC AI</text>
+    <!-- Pixel Bar -->
+    <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="152" y="2" width="6" height="8" class="indicator-alt travel-pixel" style="animation-duration: 3s; animation-delay: 1s;" />
+    <!-- Node -->
+    <rect x="260" y="2" width="8" height="8" class="indicator-alt pulse-alt" />
+    <rect x="260" y="2" width="8" height="8" fill="none" class="border-thin" />
+    <text x="280" y="10" class="text">ACTIVE</text>
   </g>
 
   <!-- FULL-STACK -->
-  <g transform="translate(40, 160)">
-    <text x="0" y="15" class="text">FULL-STACK</text>
-    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
-    <rect x="180" y="5" width="100" height="12" fill="var(--border)" />
-    <circle cx="320" cy="11" r="5" class="indicator blink" style="animation-delay: 1s;" />
-    <text x="340" y="15" class="text">ONLINE</text>
+  <g transform="translate(50, 170)">
+    <text x="0" y="10" class="text">FULL-STACK</text>
+    <!-- Pixel Bar -->
+    <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="152" y="2" width="6" height="8" class="indicator travel-pixel" style="animation-duration: 4s;" />
+    <!-- Node -->
+    <rect x="260" y="2" width="8" height="8" class="indicator pulse" />
+    <rect x="260" y="2" width="8" height="8" fill="none" class="border-thin" />
+    <text x="280" y="10" class="text">ONLINE</text>
   </g>
 
   <!-- BUILD PIPELINE -->
-  <g transform="translate(40, 200)">
-    <text x="0" y="15" class="text">BUILD PIPELINE</text>
-    <rect x="180" y="5" width="100" height="12" fill="var(--border)" opacity="0.2" />
-    <rect x="180" y="5" width="60" height="12" class="indicator-alt bar-anim" style="animation-delay: 2s;" />
-    <circle cx="320" cy="11" r="5" class="indicator-alt blink" style="animation-delay: 0.5s;" />
-    <text x="340" y="15" class="text">RUNNING</text>
+  <g transform="translate(50, 200)">
+    <text x="0" y="10" class="text">BUILD PIPELINE</text>
+    <!-- Pixel Bar -->
+    <rect x="150" y="0" width="90" height="12" fill="none" class="border-thin" />
+    <rect x="152" y="2" width="6" height="8" class="indicator-alt travel-pixel" style="animation-duration: 5s; animation-delay: 2s;" />
+    <!-- Node -->
+    <rect x="260" y="2" width="8" height="8" class="indicator-alt pulse-alt" />
+    <rect x="260" y="2" width="8" height="8" fill="none" class="border-thin" />
+    <text x="280" y="10" class="text">RUNNING</text>
   </g>
 </svg>

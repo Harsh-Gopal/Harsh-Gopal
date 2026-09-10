@@ -20,3 +20,24 @@ The colors are managed directly inside the SVGs via CSS variables mapping to sys
 - **No Generic Badges**: Do not use simple shield.io badge collections.
 - **No External JavaScript**: Do not use Next.js, React, or JavaScript running in the browser for visuals. SVGs must be strictly self-contained.
 - **Preserve the Pixel Grid**: Any new designs must utilize the pixel grid and geometric styling.
+
+## DESIGN QA
+Checklist:
+- [ ] No arcade
+- [ ] No game UI
+- [ ] No clock
+- [ ] No date
+- [ ] No fake macOS lock screen
+- [ ] No generic badge wall
+- [ ] No neon cyberpunk aesthetic
+- [ ] Pixel-grid identity preserved
+- [ ] Retro-computer aesthetic preserved
+- [ ] Hero animation works
+- [ ] Dark mode works
+- [ ] Light mode works
+- [ ] Mobile layout works
+- [ ] SVG assets remain lightweight
+- [ ] README works without JavaScript
+- [ ] Project information is accurate
+- [ ] No dead links
+- [ ] Contribution animation works
